@@ -7,10 +7,11 @@ const App = () => {
   const [contacts, setContacts] = useState([]);
   const [filter, setFilter] = useState('');
   
-    const addNewContact = (newName) => {
+    const addNewContact = (newName, newNumber) => {
       const NewContact = {
         id: nanoid(),
-        name: newName
+        name: newName,
+        number: newNumber
       };
     setContacts([...contacts, NewContact]);
     };
@@ -29,7 +30,7 @@ const App = () => {
               onChange={(e) => setFilter(e.target.value)}
             />
               <ul>{filterContacts.map(contact => (
-                  <li key = {contact.id}>{contact.name}</li>
+                  <li key = {contact.id}>{contact.name} - {contact.number}</li>
                 ))}
               </ul>
     </Cont>

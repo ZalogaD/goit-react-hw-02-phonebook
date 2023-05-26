@@ -4,11 +4,13 @@ import prop from 'prop-types';
 
 const ContactForm = ({ addNewContact }) => {
   const [newName, setNewName] = useState('');
+  const [newNumber, setNewNumber] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addNewContact(newName);
+    addNewContact(newName, newNumber);
     setNewName('');
+    setNewNumber('');
   };
 
   return (
@@ -22,15 +24,22 @@ const ContactForm = ({ addNewContact }) => {
         value={newName}
         onChange={(e) => setNewName(e.target.value)}
       />
+      <Input
+        type="tel"
+        name="number"
+        pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+        title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+        required
+        value={newNumber}
+        onChange={(e) => setNewNumber(e.target.value)}
+      />
       <Btn type="submit">Add Contact</Btn>
     </Form>
   );
 };
 
 ContactForm.prop = {
-    onChange: prop.func,
-    onAddContact: prop.func,
-    contacts: prop.array.isRequired
+    addNewContact: prop.func.isRequired,
 };
 
 export default ContactForm;
