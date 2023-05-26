@@ -1,8 +1,9 @@
-import React, { Phone } from 'react';
-
+import React, { useState } from 'react';
+import {Form, Input, Btn} from './ContactForm.styled';
+import prop from 'prop-types';
 
 const ContactForm = ({ addNewContact }) => {
-  const [newName, setNewName] = Phone('');
+  const [newName, setNewName] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -11,8 +12,8 @@ const ContactForm = ({ addNewContact }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
+    <Form onSubmit={handleSubmit}>
+      <Input
         type="text"
         name="name"
         pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -21,9 +22,15 @@ const ContactForm = ({ addNewContact }) => {
         value={newName}
         onChange={(e) => setNewName(e.target.value)}
       />
-      <btn type="submit">Add Contact</btn>
-    </form>
+      <Btn type="submit">Add Contact</Btn>
+    </Form>
   );
+};
+
+ContactForm.prop = {
+    onChange: prop.func,
+    onAddContact: prop.func,
+    contacts: prop.array.isRequired
 };
 
 export default ContactForm;

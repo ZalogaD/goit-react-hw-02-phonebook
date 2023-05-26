@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import ContactForm from './ContactForm/СontactForm';
 import { nanoid } from 'nanoid';
+import { Cont, TitlePh, TitleCont} from './App.styled';
 
 const App = () => {
   const [contacts, setContacts] = useState([]);
@@ -17,10 +18,10 @@ const App = () => {
     const filterContacts = contacts.filter(contact => contact.name.toLowerCase().includes(filter.toLowerCase()));
 
   return (
-    <div>
-      <h1>Phonebook</h1>
+    <Cont>
+      <TitlePh>Phonebook</TitlePh>
         <ContactForm addNewContact={addNewContact} />
-          <h2>Contacts:</h2>
+          <TitleCont>Contacts:</TitleCont>
             <input 
               type="text"
               placeholder="Search contacts"
@@ -31,7 +32,7 @@ const App = () => {
                   <li key = {contact.id}>{contact.name}</li>
                 ))}
               </ul>
-    </div>
+    </Cont>
   );
 };
 
