@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import ContactForm from './ContactForm/СontactForm';
+// eslint-disable-next-line
+import ContactList from './ContactList/ContactList';
+// eslint-disable-next-line
+import Filter from './Filter/Filter';
 import { nanoid } from 'nanoid';
 import { Cont, TitlePh, TitleCont} from './App.styled';
 
@@ -28,16 +32,8 @@ const App = () => {
       <TitlePh>Phonebook</TitlePh>
         <ContactForm addNewContact={addNewContact} />
           <TitleCont>Contacts:</TitleCont>
-            <input 
-              type="text"
-              placeholder="Search contacts"
-              value={filter}
-              onChange={(e) => setFilter(e.target.value)}
-            />
-              <ul>{filterContacts.map(contact => (
-                  <li key = {contact.id}>{contact.name} - {contact.number}</li>
-                ))}
-              </ul>
+            <Filter filter={filter} onFilterChange={(e) => setFilter(e.target.value)} />
+              <ContactList contacts={filterContacts} />
     </Cont>
   );
 };
