@@ -2,12 +2,21 @@ import React, { useState } from 'react';
 import {Form, Input, Btn} from './ContactForm.styled';
 import prop from 'prop-types';
 
-const ContactForm = ({ addNewContact }) => {
+const ContactForm = ({ addNewContact, contacts }) => {
   const [newName, setNewName] = useState('');
   const [newNumber, setNewNumber] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const isContactExists = contacts.some(
+      (contact) => contact.name.toLowerCase() === newName.toLowerCase()
+    );
+
+    if (isContactExists) {
+      alert(`${newName} is already in contacts. Please enter a different name.`);
+      return;
+    }
+    
     addNewContact(newName, newNumber);
     setNewName('');
     setNewNumber('');
@@ -40,6 +49,13 @@ const ContactForm = ({ addNewContact }) => {
 
 ContactForm.prop = {
     addNewContact: prop.func.isRequired,
-};
+    contacts: prop.arrayOf(
+      prop.shape({
+        id: prop.string.isRequired,
+        name: prop.string.isRequired,
+        number: prop.string.isRequired,
+      })
+    ).isRequired,
+  };
 
 export default ContactForm;
