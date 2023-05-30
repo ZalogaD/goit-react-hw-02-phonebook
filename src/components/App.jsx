@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import ContactForm from './ContactForm/СontactForm';
-// eslint-disable-next-line
 import ContactList from './ContactList/ContactList';
-// eslint-disable-next-line
 import Filter from './Filter/Filter';
 import { nanoid } from 'nanoid';
 import { Cont, TitlePh, TitleCont} from './App.styled';
@@ -24,12 +22,16 @@ const App = () => {
         return;
       }
 
-      const NewContact = {
+      const newContact = {
         id: nanoid(),
         name: newName,
         number: newNumber
       };
-    setContacts([...contacts, NewContact]);
+    setContacts([...contacts, newContact]);
+    };
+
+    const deleteContact = (id) => {
+      setContacts(contacts.filter((contact) => contact.id !== id));
     };
 
     const filterContacts = contacts.filter((contact) => contact.name.toLowerCase().includes(filter.toLowerCase()));
@@ -40,7 +42,7 @@ const App = () => {
         <ContactForm addNewContact={addNewContact} contacts = {contacts} />
           <TitleCont>Contacts:</TitleCont>
             <Filter filter={filter} onFilterChange={(e) => setFilter(e.target.value)} />
-              <ContactList contacts={filterContacts} />
+              <ContactList contacts={filterContacts} onDeleteContact={deleteContact} />
             </Cont>
   );
 };

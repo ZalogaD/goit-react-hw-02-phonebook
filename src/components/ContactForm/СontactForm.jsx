@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {Form, Input, Btn} from './ContactForm.styled';
-import prop from 'prop-types';
+import PropTypes from 'prop-types';
 
 const ContactForm = ({ addNewContact, contacts }) => {
   const [newName, setNewName] = useState('');
@@ -47,13 +47,13 @@ const ContactForm = ({ addNewContact, contacts }) => {
   );
 };
 
-ContactForm.prop = {
-    addNewContact: prop.func.isRequired,
-    contacts: prop.arrayOf(
-      prop.shape({
-        id: prop.string.isRequired,
-        name: prop.string.isRequired,
-        number: prop.string.isRequired,
+ContactForm.propTypes = {
+    addNewContact: PropTypes.func.isRequired,
+    contacts: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        number: PropTypes.string.isRequired,
       })
     ).isRequired,
   };
