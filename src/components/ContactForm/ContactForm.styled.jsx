@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-export const Form = styled.div`
+export const Form = styled.form`
   width: 350px;
   padding: 50px;
   margin: 0 auto;
@@ -12,16 +12,16 @@ export const Form = styled.div`
 `;
 
 //export const Title = styled.p`
-  //font-family: 'Montserrat', sans-serif;
-  //font-size: 20px;
-  //font-weight: bold;
-  //color: #37474F;
-  //margin-bottom: 20px;  
+//font-family: 'Montserrat', sans-serif;
+//font-size: 20px;
+//font-weight: bold;
+//color: #37474F;
+//margin-bottom: 20px;
 //`;
 
 export const Input = styled.input`
   font-size: 20px;
-  background-color: #FFF8DC;
+  background-color: #fff8dc;
   padding: 10px;
   margin-bottom: 8px;
   border: none;
@@ -31,8 +31,8 @@ export const Input = styled.input`
 
   &:hover,
   &:focus {
-    background-color: #00FFFF;
-    border-color: #E0FFFF;
+    background-color: #00ffff;
+    border-color: #e0ffff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   }
 `;
@@ -51,8 +51,8 @@ export const Btn = styled.button`
 
   &:hover,
   &:focus {
-    background-color: #1565C0;
-    border-color: #0D47A1;
+    background-color: #1565c0;
+    border-color: #0d47a1;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
-`
+`;
